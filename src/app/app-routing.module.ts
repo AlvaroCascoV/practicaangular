@@ -9,7 +9,7 @@ import { UpdatePersonajeComponentComponent } from './components/update-personaje
 const routes: Routes = [
   { path: '', component: HomeComponentComponent },
   { path: 'home', component: HomeComponentComponent },
-  { path: 'series/?:id', component: SerieComponentComponent },
+  { path: 'series/:id', component: SerieComponentComponent },
   { path: 'personajes', component: PersonajesComponentComponent },
   { path: 'create', component: CreatePersonajeComponentComponent },
   { path: 'update/?:id', component: UpdatePersonajeComponentComponent }
