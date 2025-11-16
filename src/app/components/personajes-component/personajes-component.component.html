@@ -1,1 +1,35 @@
-<p>personajes-component works!</p>
+<div class="container mt-4">
+  <div class="header mb-4">
+    <h1 class="page-title mb-3">👥 Personajes de la Serie</h1>
+    <p class="subtitle mb-3">ID de la Serie: {{ idSerie }}</p>
+    <a [routerLink]="['/series', idSerie]" class="btn btn-danger">
+      <span>⬅️</span>
+      Volver a Serie
+    </a>
+  </div>
+
+  @if (personajes && personajes.length > 0) {
+    <div class="row g-3">
+      @for (pers of personajes; track pers.idPersonaje) {
+        <div class="col-md-4 col-lg-3">
+          <div class="card h-100">
+            <div class="position-relative">
+              <img [src]="pers.imagen" [alt]="pers.nombre" class="card-img-top" style="height: 250px; object-fit: cover;" />
+              <div class="position-absolute top-0 end-0 m-2">
+                <span class="badge bg-warning text-dark">⭐</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ pers.nombre }}</h5>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="text-center py-5">
+      <span class="display-4 d-block mb-3">😔</span>
+      <p class="lead">No hay personajes disponibles para esta serie</p>
+    </div>
+  }
+</div>
