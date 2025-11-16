@@ -10,10 +10,22 @@ export class SeriesPersonajesService {
   constructor(private _http: HttpClient) { }
 
   // Personajes CRUD
-  getPersonajes(idSerie: number): Observable<Array<Personaje>> {
+  getPersonajesSerie(idSerie: number): Observable<Array<Personaje>> {
     let request = 'api/Series/PersonajesSerie/' + idSerie;
     let url = environment.urlApiSeries + request;
     return this._http.get<Array<Personaje>>(url);
+  }
+
+  getPersonajes(): Observable<Array<Personaje>> {
+    let request = 'api/personajes';
+    let url = environment.urlApiSeries + request;
+    return this._http.get<Array<Personaje>>(url);
+  }
+
+  findPersonaje(idPersonaje: number): Observable<Personaje> {
+    let request = 'api/personajes/' + idPersonaje;
+    let url = environment.urlApiSeries + request;
+    return this._http.get<Personaje>(url);
   }
 
   createPersonaje(personaje: Personaje): Observable<any> {
@@ -24,6 +36,15 @@ export class SeriesPersonajesService {
     let request = 'api/personajes';
     let url = environment.urlApiSeries + request;
     return this._http.post<Array<Personaje>>(url, json, { headers: header });
+  }
+
+  updatePersonaje(personaje: Personaje): Observable<any> {
+    let json = JSON.stringify(personaje);
+    let header = new HttpHeaders().set('Content-type', 'application/json');
+
+    let request = 'api/personajes';
+    let url = environment.urlApiSeries + request;
+    return this._http.put(url, json, { headers: header });
   }
 
   // Series CRUD

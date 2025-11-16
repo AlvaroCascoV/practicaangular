@@ -21,7 +21,7 @@ export class PersonajesComponentComponent implements OnInit {
   ngOnInit(): void {
     this._activeRoute.params.subscribe((params: Params) => {
       this.idSerie = parseInt(params['idSerie']);
-      this._service.getPersonajes(this.idSerie).subscribe(response => {
+      this._service.getPersonajesSerie(this.idSerie).subscribe(response => {
         this.personajes = response;
       });
     });

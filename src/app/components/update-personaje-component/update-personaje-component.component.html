@@ -1,1 +1,46 @@
-<p>update-personaje-component works!</p>
+<div class="container mt-4">
+  <div class="form-header mb-4">
+    <h1 class="form-title mb-3">
+      <span>🔄</span>
+      Modificar Personaje
+    </h1>
+    <p class="form-description">Cambia un personaje de una serie a otra</p>
+  </div>
+
+  <form class="styled-form" #formUpdatePersonaje="ngForm">
+    <div class="mb-3">
+      <label class="form-label">
+        <span>👤</span>
+        Selecciona el Personaje
+      </label>
+      <select #cajaIdPersonaje class="form-select" required>
+        <option value="0" disabled>Elige un personaje</option>
+        @for (pers of personajes; track pers.idPersonaje) {
+          <option [value]="pers.idPersonaje">
+            {{ pers.nombre }}
+          </option>
+        }
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">
+        <span>📺</span>
+        Nueva Serie
+      </label>
+      <select #cajaIdSerie class="form-select" required>
+        <option value="0" disabled>Selecciona la nueva serie</option>
+        @for (serie of series; track serie.idSerie) {
+          <option [value]="serie.idSerie">
+            {{ serie.nombre }}
+          </option>
+        }
+      </select>
+    </div>
+
+    <button class="btn btn-success" type="button" (click)="updatePersonaje()">
+      <span>🔄</span>
+      Modificar Personaje
+    </button>
+  </form>
+</div>
