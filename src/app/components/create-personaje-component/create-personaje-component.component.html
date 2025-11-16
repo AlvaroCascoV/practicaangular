@@ -1,1 +1,58 @@
-<p>create-personaje-component works!</p>
+<div class="container mt-4">
+  <div class="form-header mb-4">
+    <h1 class="form-title mb-3">✨ Crear Nuevo Personaje</h1>
+    <p class="form-description">
+      Agrega un nuevo personaje a tu serie favorita
+    </p>
+  </div>
+
+  <form class="styled-form">
+    <div class="mb-3">
+      <label class="form-label">
+        <span>👤</span>
+        Nombre del Personaje
+      </label>
+      <input
+        #nombre
+        class="form-control"
+        type="text"
+        placeholder="Ej: Walter White"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">
+        <span>🖼️</span>
+        URL de la Imagen
+      </label>
+      <input
+        #imagen
+        class="form-control"
+        type="text"
+        placeholder="https://ejemplo.com/imagen.jpg"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">
+        <span>📺</span>
+        Serie
+      </label>
+      <select #idSerie class="form-select" required>
+        <option value="" disabled>Selecciona una serie</option>
+        @for (serie of series; track serie.idSerie) {
+          <option [value]="serie.idSerie">
+            {{ serie.nombre }}
+          </option>
+        }
+      </select>
+    </div>
+
+    <button class="btn btn-success" type="button" (click)="insertPersonaje()">
+      <span>✅</span>
+      Crear Personaje
+    </button>
+  </form>
+</div>
