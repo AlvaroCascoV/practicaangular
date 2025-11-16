@@ -1,1 +1,37 @@
-<p>serie-component works!</p>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4">📺 Detalle de la Serie</h1>
+    </div>
+  </div>
+  
+  @if (serie) {
+    <div class="row">
+      <div class="col-md-8 col-lg-6 mx-auto">
+        <div class="card">
+          <div class="position-relative">
+            <img [src]="serie.imagen" class="card-img-top" [alt]="serie.nombre" style="height: 300px; object-fit: cover;" />
+            <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-2">
+              ⭐ {{ serie.puntuacion }}
+            </span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title">{{ serie.nombre }}</h2>
+            <div class="card-text">
+              <div class="mb-3">
+                <span class="badge bg-secondary me-2">🆔 ID: {{ serie.idSerie }}</span>
+                <span class="badge bg-info">⭐ IMDB: {{ serie.puntuacion }}/10</span>
+              </div>
+              <div class="mt-3">
+                <a [routerLink]="['/personajes', serie.idSerie]" class="btn btn-primary">
+                  <span>👥</span>
+                  Ver Personajes
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

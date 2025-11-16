@@ -12,13 +12,13 @@ export class SeriesPersonajesService {
   // Personajes CRUD
   getPersonajes(): Observable<Array<Personaje>> {
     let request = 'api/personajes';
-    let url = environment.urlApiSeries + '/' + request;
+    let url = environment.urlApiSeries + request;
     return this._http.get<Array<Personaje>>(url);
   }
 
   findPersonaje(idPersonaje: number): Observable<Personaje> {
     let request = 'api/personajes/' + idPersonaje;
-    let url = environment.urlApiSeries + '/' + request;
+    let url = environment.urlApiSeries + request;
     return this._http.get<Personaje>(url);
   }
 
@@ -28,20 +28,20 @@ export class SeriesPersonajesService {
     header = header.set('Content-type', 'application/json');
 
     let request = 'api/personajes';
-    let url = environment.urlApiSeries + '/' + request;
+    let url = environment.urlApiSeries + request;
     return this._http.post<Array<Personaje>>(url, json, { headers: header });
   }
 
   // Series CRUD
   getSeries(): Observable<Array<Serie>> {
     let request = 'api/series';
-    let url = environment.urlApiSeries + '/' + request;
+    let url = environment.urlApiSeries + request;
     return this._http.get<Array<Serie>>(url);
   }
 
   findSerie(idSerie: number): Observable<Serie> {
     let request = 'api/Series/' + idSerie;
-    let url = environment.urlApiSeries + '/' + request;
+    let url = environment.urlApiSeries + request;
     return this._http.get<Serie>(url);
   }
 }

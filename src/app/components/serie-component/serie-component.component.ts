@@ -10,7 +10,6 @@ import { SeriesPersonajesService } from '../../services/series-personajes.servic
   styleUrl: './serie-component.component.css'
 })
 export class SerieComponentComponent implements OnInit {
-  public idSerie!: number;
   public serie!: Serie;
 
   constructor(
@@ -20,9 +19,9 @@ export class SerieComponentComponent implements OnInit {
 
   ngOnInit(): void {
     this._activeRoute.params.subscribe((params: Params) => {
-      this.idSerie = +params['id'];
-      this._service.findSerie(this.idSerie).subscribe(data => {
-        this.serie = data;
+      let idSerie = parseInt(params['idSerie']);
+      this._service.findSerie(idSerie).subscribe(response => {
+        this.serie = response;
       });
     });
   }
